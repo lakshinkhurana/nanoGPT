@@ -62,9 +62,12 @@ class BigramLanguageModel(nn.Module):
     def __init__(self):
         super().__init__()
         # each token directly reads off the logits for the next token from a lookup table
+
+        
+        #What this code does is basically it has the information about our data , the token embedding table holds the features of the word in a vector , the position embedding table holds the data of where the word is in the sentence and the lm_head converts the information back into a linear vector and tells us what word comes next as 
         self.token_embedding_table = nn.Embedding(vocab_size, n_embd)
         self.position_embedding_table=nn.Embedding(block_size,n_embd)
-        self.lm_head==nn.Linear(n_embd,vocab_size)
+        self.lm_head=nn.Linear(n_embd,vocab_size)
 
     def forward(self, idx, targets=None):
         B,T=idx.shape
