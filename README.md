@@ -1,8 +1,8 @@
-# GPT Shakespeare 🧠📜
+# nanoGPT 🧠✨
 
 This project is a personal implementation inspired by transformer-based architectures, primarily grounded in the ideas introduced in the paper **["Attention Is All You Need"](https://arxiv.org/abs/1706.03762)** by Vaswani et al.
 
-The goal of this project is to understand how models like GPT generate coherent text — in this case, mimicking the poetic style of **Shakespeare**.
+The goal of this project is to understand how models like GPT generate coherent text — in this case, mimicking the poetic style of **Shakespeare** using a character-level language model.
 
 ---
 
@@ -28,7 +28,7 @@ This practical journey has helped me deeply internalize the workings of transfor
 - Notebook: [`gpt_project.ipynb`](gpt_project.ipynb)
 - Script: [`gpt.py`](gpt.py)
 - Dataset: [`input.txt`](input.txt) — sample training text
-- Model: Transformer-based text generator
+- Model: Transformer-based character-level text generator
 - Output: Coherent, Shakespeare-style text samples
 
 ---
