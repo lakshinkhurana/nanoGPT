@@ -39,6 +39,7 @@ This practical journey has helped me deeply internalize the workings of transfor
 |-----------------------|----------------------------------------------|
 | `gpt_project.ipynb`   | Main notebook containing model code          |
 | `gpt.py`              | Standalone Python script version of notebook |
+| `bigram.py`           | Previous version of gpt.py                   |
 | `input.txt`           | Sample text input used to train the model    |
 | `README.md`           | This documentation file                      |
 | `LICENSE`             | MIT License                                  |
