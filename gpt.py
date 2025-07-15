@@ -5,7 +5,7 @@ from torch.nn import functional as F
 # hyperparameters
 batch_size = 32 # how many independent sequences will we process in parallel?
 block_size = 8 # what is the maximum context length for predictions?
-max_iters = 5000
+max_iters = 5500
 eval_interval = 500
 learning_rate = 1e-3
 device = 'cuda' if torch.cuda.is_available() else 'cpu'
@@ -112,10 +112,12 @@ class Block(nn.Module):
         head_size=n_embd//n_head
         self.sa=MultiHeadAttention(n_head,head_size)
         self.ffwd=FeedForward(n_embd)
+        self.layernorm1=nn.LayerNorm(n_embd)
+        self.layernorm2=nn.LayerNorm(n_embd)
     
     def forward(self,x):
-        x=x+self.sa(x)
-        x=x+self.ffwd(x)
+        x=x+self.sa(self.layernorm1(x))
+        x=x+self.ffwd(self.layernorm2(x))
         return x
 # super simple bigram model
 class BigramLanguageModel(nn.Module):
@@ -129,6 +131,7 @@ class BigramLanguageModel(nn.Module):
             Block(n_embd,n_head=4),
             Block(n_embd,n_head=4),
             Block(n_embd,n_head=4),
+            nn.LayerNorm(n_embd),
         )
         self.sa_heads = MultiHeadAttention(4,n_embd//4)#4 heads of 8-dimensional self attention
         self.ffwd=FeedForward(n_embd)
